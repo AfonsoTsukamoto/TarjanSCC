@@ -1,10 +1,11 @@
 module TarjanSCC
   class Vertix
-    attr_accessor :lowlink, :index, :edges
-    def initialize
+    attr_accessor :lowlink, :index, :edges, :position
+    def initialize(pos)
       @edges = []
       @lowlink = nil
       @index = nil
+      @position = pos
       self # allow chained methods
     end
 
@@ -23,7 +24,7 @@ module TarjanSCC
     end
 
     def <<(val)
-      @edges << val -1
+      @edges << val
     end
 
     def each_edge(&block)

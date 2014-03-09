@@ -7,13 +7,12 @@ module TarjanSCC
     end
 
     def <<(val)
-      raise 'Bad format!' if val.class.to_s != 'Vertix'
+      #raise 'Bad format!' if val.class.to_s != 'Vertix'
       @array << val
     end
 
     def print
       @array.each do |vertix|
-        puts "SCC Vertixes"
         vertix.print rescue 'Bad format!'
       end
     end

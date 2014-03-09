@@ -8,12 +8,18 @@ Gem::Specification.new do |spec|
   spec.version       = TarjanSCC::VERSION
   spec.authors       = ["Afonso Tsukamoto"]
   spec.email         = ["atsukamoto@faber-ventures.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{TarjanSCC algorithm}
+  spec.description   = %q{TarjanSCC algorithm for a proof of concept for an programming asset.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0")
+  spec.files         = [`git ls-files -z`.split("\x0"),
+                        'lib/TarjanSCC.rb',
+                        'lib/TarjanSCC/scc.rb',
+                        'lib/TarjanSCC/stack.rb',
+                        'lib/TarjanSCC/tarjan_executer.rb',
+                        'lib/TarjanSCC/vert_array.rb',
+                        'lib/TarjanSCC/vertix.rb']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]

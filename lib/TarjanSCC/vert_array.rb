@@ -1,5 +1,6 @@
 module TarjanSCC
   class VertArray
+    require 'singleton'
     include Singleton
 
     class << self
@@ -26,6 +27,12 @@ module TarjanSCC
       def []=(ind, val)
         raise 'Out of bounds!' if out_of_bounds?(ind)
         @array[ind] = val
+      end
+
+      def print
+        @array.each do |t|
+          puts t
+        end
       end
 
       private

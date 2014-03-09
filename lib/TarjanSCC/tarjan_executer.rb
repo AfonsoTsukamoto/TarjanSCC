@@ -1,31 +1,31 @@
-require 'scc'
-require 'stack'
-require 'vert_array'
-require 'vertix'
 
 module TarjanSCC
+
   @@index = 0
   @@scc_array = []
+  def self.sccs
+    @@scc_array
+  end
 
   def self.execute(container=nil)
-    VertArray.each_with_index do |vertice, index|
-      if vertice.undefined?
+    VertArray.each_with_index do |vertix, index|
+      if vertix.undefined?
         self.strong_connect(index, container)
       end
     end
-    container ? return container : return @@scc_array
-    #for each vertice in Vertices do
-    #if (v.index is undefined) then
-    #  strongconnect(v)
-    #end if
-    #end for
+    if container
+      return container
+    else
+      puts "SCCS Array"
+      puts @@scc_array.count
+      return @@scc_array
+    end
   end
 
-  def self.strong_connect(ind, container)
-    # Set the depth index for vertice to the smallest unused index, vertice[index] = SMALL(index)
+  def self.strong_connect(ind, container=nil)
     vertix = VertArray[ind]
-    vertix.index = Global.index
-    vertix.lowlink = Global.index
+    vertix.index = @@index
+    vertix.lowlink = @@index
     @@index = @@index + 1
     Stack.push(vertix)
 
@@ -43,8 +43,8 @@ module TarjanSCC
 
     if vertix.is_root?
       scc = SCC.new
-      Stack.each_till_index(ind) do |indice|
-        scc << indice
+      Stack.each_till_index(ind) do |w|
+        scc << w
       end
       if container
         container << scc
@@ -52,27 +52,5 @@ module TarjanSCC
         @@scc_array << scc
       end
     end
-
-    #for each (v, w) in Edges do
-    #  if (w.index is undefined) then
-    #    // Successor w has not yet been visited; recurse on it
-    #    strongconnect(w)
-    #    v.lowlink  = min(v.lowlink, w.lowlink)
-    #  elsif (w is in Stack) then
-    #    // Successor w is in stack S and hence in the current SCC
-    #    v.lowlink  := min(v.lowlink, w.index)
-    #  end if
-    #end for
-    #
-    #// If v is a root node, pop the stack and generate an SCC
-    #if (v.lowlink = v.index) then
-    #  start a new strongly connected component
-    #  repeat
-    #    w := S.pop()
-    #    add w to current strongly connected component
-    #  until (w = v)
-    #  output the current strongly connected component
-    #end if
-    #end function
   end
 end

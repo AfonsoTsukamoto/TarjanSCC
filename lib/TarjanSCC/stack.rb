@@ -1,31 +1,32 @@
 module TarjanSCC
   class Stack
+    require 'singleton'
     include Singleton
     class << self
       attr_accessor :indexes_array
 
-      def initialize
-        @indexes_array = []
+      def indexes_array
+        @@indexes_array ||= []
       end
 
       def push(element)
-        @indexes_array.push(element)
+        self.indexes_array.push(element)
       end
 
       def pop
-        @indexes_array.pop
+        self.indexes_array.pop
       end
 
       def contains?(indice)
-        @indexes_array.include?(indice)
+        self.indexes_array.any?{ |vertix| vertix.position == indice }
       end
 
       def each_till_index(el, &block)
         raise "Block must be passed" if !block_given?
-        @indexes_array.count.times do
-          w = @indexes_array.pop
+        self.indexes_array.count.times do
+          w = self.pop
           block.call(w)
-          return if w == el
+          break if w.position == el
         end
       end
     end

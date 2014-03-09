@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Afonso Tsukamoto"]
   spec.email         = ["atsukamoto@faber-ventures.com"]
   spec.summary       = %q{TarjanSCC algorithm}
-  spec.description   = %q{TarjanSCC algorithm for a proof of concept for an programming asset.}
-  spec.homepage      = ""
+  spec.description   = %q{TarjanSCC algorithm for a proof of concept for an algorithms course.}
+  spec.homepage      = "https://github.com/AfonsoTsukamoto/TarjanSCC"
   spec.license       = "MIT"
 
   spec.files         = [`git ls-files -z`.split("\x0"),

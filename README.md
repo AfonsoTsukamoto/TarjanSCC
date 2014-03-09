@@ -1,6 +1,8 @@
-# TarjanSCC
+# TarjanSCC-Ruby
 
-TODO: Write a gem description
+This is the Tarjan's strongly connected components algorithm in ruby. It is striclty for academic purpose, for a proof concept for an Algorithms course.
+
+The gem is not finished yet so just ignore the rest of this readme.
 
 ## Installation
 
